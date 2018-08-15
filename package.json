@@ -6,7 +6,9 @@
     "node": "8.9.x"
   },
   "scripts": {
-    "start": "node server",
+    "client": "cd ../client && npm start",
+    "start": "cd ../server && node server",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "cacheDirectories": [
@@ -27,5 +29,7 @@
     "react"
   ],
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
 }
